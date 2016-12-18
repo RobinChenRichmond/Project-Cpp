@@ -1,0 +1,17 @@
+CC = g++
+LD = $(CC)
+
+main2: main2.o
+	$(LD) -o main2 Number.o Number_c.o main2.o
+
+Number_c.o: Number_c.cpp Number_c.h Number.h Number.cpp
+	$(CC) -c Number_c.cpp
+
+Number.o: Number.h Number.cpp
+	$(CC) -c Number.cpp
+
+main2.o: Number.o Number_c.o main2.cpp
+	$(CC) -c main2.cpp
+
+clean:
+	/bin/rm -f *.o main main2 ReadDecimal
